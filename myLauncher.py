@@ -9,18 +9,45 @@
 # try py2web to see what it gives.
 # think about put in GiHub as well 
 
+##
+'''
+helping links :
+http://www.blog.pythonlibrary.org/2010/09/04/python-101-how-to-open-a-file-or-program/
+http://pandas.pydata.org/pandas-docs/stable/io.html
+
+'''
+##
 import wx, os
 import myGUI_Frames
 import Cmin2tray
 import myRibbonBar
+import pandas as pd
+
+MY_DEBUG = True
 
 myGlobals = {}
-myGlobals['emptyFrame#2'] = 'true'
+myGlobals['user_path']      = './user_data/'
+myGlobals['user_file']      = 'mySubjectsLists.txt'
+myGlobals['user_dict']      = {}
+myGlobals['emptyFrame#2']   = 'true'
 
 #inherit from the MainFrame created in wxFowmBuilder and create CalcFrame
 class LauncherFrame(myGUI_Frames.LauncherFrame):
     #constructor
     def __init__(self,parent):
+
+        # read user file: ( read-only mode by default )
+        f_name = myGlobals['user_path'] + myGlobals['user_file']
+        f = open(  f_name )
+        # read all the lines in the file and return them in a list
+        lines = f.readlines()
+        f.close()
+        if MY_DEBUG :
+            print lines
+
+        # table = pd.read_table(f_name ) #, sep='|')
+        # print table
+
         #initialize parent class
         myGUI_Frames.LauncherFrame.__init__(self,parent) # defined by the wx.Builder.class in outer file
         LauncherFrame.btn_3_func(self,None)
@@ -29,6 +56,8 @@ class LauncherFrame(myGUI_Frames.LauncherFrame):
 
         self.Bind(wx.EVT_ICONIZE, self.onMinimize)
         self.Bind(wx.EVT_CLOSE  , self.onClose)
+
+        self.state = 'regular_shown'
         # myMainMenu.m_panel1.ShowYourself()
         # myMainMenu.LauncherFrame.m_panel2.Show()
         # myMainMenu.LauncherFrame.
@@ -116,7 +145,7 @@ frame   = LauncherFrame(None)
 frame2  = webSitesFrame(None)
 frame2.add_to_list('new new test')
 win     = myRibbonBar.RibbonFrame(frame, -1, "wxPython Ribbon Sample Application", size=(270, 200), pos=(950,530))
-# win.show(False)
+win.Show(False)
 
 # frame   =
 frame.Show(True)

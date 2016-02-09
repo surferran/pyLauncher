@@ -31,6 +31,8 @@ class RibbonFrame(wx.Frame):
 
         wx.Frame.__init__(self, parent, id, title, pos, size, wx.DEFAULT_FRAME_STYLE+wx.NO_BORDER+wx.CAPTION+wx.HORIZONTAL  )
 
+        parent.ribbon_link = self
+
         panel = wx.Panel(self,wx.EXPAND)
         # panel.CanScroll(False)
         # self.AlwaysShowScrollbars(False)
