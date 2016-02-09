@@ -2,7 +2,7 @@ import wx
 import os,  subprocess
 
 TRAY_TOOLTIP = ' -- application MyLauncher -- '  #"restore"
-TRAY_ICON  = '.\IMAGES\icon.ico'
+TRAY_ICON  = '.\IMAGES\wx.ico'
 TRAY_ICONs = [TRAY_ICON , '.\IMAGES\quad.png']
 
 

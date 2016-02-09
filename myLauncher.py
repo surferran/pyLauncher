@@ -86,6 +86,11 @@ class LauncherFrame(myGUI_Frames.LauncherFrame):
         self.tbIcon.Destroy()
         self.Destroy()
         print "closing main frame"
+
+        tmp = self.ribbon_link
+        tmp.Close()
+        tmp.Destroy()
+
         # if myGlobals['emptyFrame#2'] != 'true':
         frame2.Close()
         frame2.Destroy()
