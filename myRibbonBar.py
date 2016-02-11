@@ -1,11 +1,12 @@
-import wx
-import os
-import sys
+# import wx
+# import os
+# import sys
+#
+# import coded_images as          images
+# from   coded_images_2   import  *
+# import wx.lib.agw.ribbon as RB
 
-import coded_images as          images
-from   coded_images_2   import  *
-import wx.lib.agw.ribbon as RB
-
+from util_functions import *
 
 # --------------------------------------------------- #
 # Some constants for ribbon buttons
@@ -15,9 +16,6 @@ ID_TRIANGLE     = ID_CIRCLE + 2
 ID_SQUARE       = ID_CIRCLE + 3
 ID_POLYGON      = ID_CIRCLE + 4
 ID_TOGGLE_PANELS = ID_CIRCLE + 20
-
-Strings = ["Project1",
-           "Project2"]
 
 def CreateBitmap(xpm):
     bmp = eval(xpm).Bitmap
@@ -29,32 +27,42 @@ class RibbonFrame(wx.Frame):
     def __init__(self, parent, id=wx.ID_ANY, title="", pos=wx.DefaultPosition,
                  size=wx.DefaultSize, style=wx.DEFAULT_FRAME_STYLE, log=None):
 
-        wx.Frame.__init__(self, parent, id, title, pos, size, wx.DEFAULT_FRAME_STYLE+wx.NO_BORDER+wx.CAPTION+wx.HORIZONTAL  )
+        wx.Frame.__init__(self, parent, id, title, pos, size, wx.HORIZONTAL  )
+        # wx.Frame.__init__(self, parent, id, title, pos, size, wx.DEFAULT_FRAME_STYLE+wx.NO_BORDER+wx.CAPTION+wx.HORIZONTAL  )
 
         parent.ribbon_link = self
 
         panel = wx.Panel(self,wx.EXPAND)
-        # panel.CanScroll(False)
-        # self.AlwaysShowScrollbars(False)
+        #
+        panel.CanScroll(False)
+        #
+        self.AlwaysShowScrollbars(False)
+
         self._ribbon = RB.RibbonBar(panel, wx.ID_ANY, agwStyle=RB.RIBBON_BAR_DEFAULT_STYLE|RB.RIBBON_BAR_SHOW_PANEL_EXT_BUTTONS)
 
-        # self._bitmap_creation_dc = wx.MemoryDC()
-        # self._colour_data = wx.ColourData()
-        
-        home  = RB.RibbonPage(self._ribbon, wx.ID_ANY, Strings[0], CreateBitmap("ribbon") )
-        home2 = RB.RibbonPage(self._ribbon, wx.ID_ANY, Strings[1], CreateBitmap("ribbon") )
+        subj_list = load_user_list()
+        # RB_pages = []
+        # for idx, value in enumerate(subj_list['item index']):
+        #     if value % 1 == 0 :
+        #         RB_page  = RB.RibbonPage(self._ribbon, wx.ID_ANY, subj_list['name'][idx], CreateBitmap("ribbon") )
+        #         RB_pages.append(RB_page)
+        RB_page1 = RB.RibbonPage(self._ribbon, wx.ID_ANY, subj_list['name'][0], (subj_list['image file'][0]) )
+        RB_page2 = RB.RibbonPage(self._ribbon, wx.ID_ANY, subj_list['name'][2], (subj_list['image file'][2]) )
+        RB_page3 = RB.RibbonPage(self._ribbon, wx.ID_ANY, subj_list['name'][5], (subj_list['image file'][5]) )
+        # RB_page2 = RB.RibbonPage(self._ribbon, wx.ID_ANY, subj_list['name'][1], CreateBitmap("ribbon") )
 
 
         # # ## # ## # ## # ## # ## # ## # ## # ## # ## # ## # ## # #
-        shapes_panel = RB.RibbonPanel(home, wx.ID_ANY, "Shapes", CreateBitmap("circle_small"))
-        shapes = RB.RibbonButtonBar(shapes_panel)
-        shapes.AddButton(ID_CIRCLE, "Circle", CreateBitmap("circle"), CreateBitmap("circle_small"),
+        # shapes_panel = RB.RibbonPanel(RB_page, wx.ID_ANY, "Shapes", CreateBitmap("circle_small"))
+        RB_panel = RB.RibbonPanel(RB_page1, wx.ID_ANY, "items", CreateBitmap("circle_small"))
+        RBp_items = RB.RibbonButtonBar(RB_panel)
+        RBp_items.AddButton(ID_CIRCLE, "Circle", CreateBitmap("circle"), CreateBitmap("circle_small"),
                          help_string="This is a tooltip for the circle button\ndemonstrating another tooltip",
                          kind=RB.RIBBON_BUTTON_TOGGLE)
-        shapes.AddSimpleButton(ID_CROSS     , "Cross", CreateBitmap("cross"), "")
-        shapes.AddHybridButton(ID_TRIANGLE  , "Triangle", CreateBitmap("triangle"))
-        shapes.AddSimpleButton(ID_SQUARE    , "Square", CreateBitmap("square"), "")
-        shapes.AddDropdownButton(ID_POLYGON , "Other Polygon", CreateBitmap("hexagon"), "")
+        RBp_items.AddSimpleButton(ID_CROSS     , "Cross", CreateBitmap("cross"), "")
+        RBp_items.AddHybridButton(ID_TRIANGLE  , "Triangle", CreateBitmap("triangle"))
+        RBp_items.AddSimpleButton(ID_SQUARE    , "Square", CreateBitmap("square"), "")
+        RBp_items.AddDropdownButton(ID_POLYGON , "Other Polygon", CreateBitmap("hexagon"), "")
 
         self._ribbon.Realize()
         # # ## # ## # ## # ## # ## # ## # ## # ## # ## # ## # ## # #
@@ -75,12 +83,12 @@ class RibbonFrame(wx.Frame):
         self.SetSizerAndFit(s)          #
 
         # self.BindEvents([selection, shapes, provider_bar, toolbar_panel])
-        shapes.Bind(RB.EVT_RIBBONBUTTONBAR_CLICKED              , self.OnCircleButton       , id=ID_CIRCLE)
-        shapes.Bind(RB.EVT_RIBBONBUTTONBAR_CLICKED              , self.OnCrossButton        , id=ID_CROSS)
-        shapes.Bind(RB.EVT_RIBBONBUTTONBAR_CLICKED              , self.OnTriangleButton     , id=ID_TRIANGLE)
-        shapes.Bind(RB.EVT_RIBBONBUTTONBAR_CLICKED              , self.OnSquareButton       ,  id=ID_SQUARE)
-        shapes.Bind(RB.EVT_RIBBONBUTTONBAR_DROPDOWN_CLICKED     , self.OnTriangleDropdown   , id=ID_TRIANGLE)
-        shapes.Bind(RB.EVT_RIBBONBUTTONBAR_DROPDOWN_CLICKED     , self.OnPolygonDropdown    , id=ID_POLYGON)
+        RBp_items.Bind(RB.EVT_RIBBONBUTTONBAR_CLICKED              , self.OnCircleButton       , id=ID_CIRCLE)
+        RBp_items.Bind(RB.EVT_RIBBONBUTTONBAR_CLICKED              , self.OnCrossButton        , id=ID_CROSS)
+        RBp_items.Bind(RB.EVT_RIBBONBUTTONBAR_CLICKED              , self.OnTriangleButton     , id=ID_TRIANGLE)
+        RBp_items.Bind(RB.EVT_RIBBONBUTTONBAR_CLICKED              , self.OnSquareButton       ,  id=ID_SQUARE)
+        RBp_items.Bind(RB.EVT_RIBBONBUTTONBAR_DROPDOWN_CLICKED     , self.OnTriangleDropdown   , id=ID_TRIANGLE)
+        RBp_items.Bind(RB.EVT_RIBBONBUTTONBAR_DROPDOWN_CLICKED     , self.OnPolygonDropdown    , id=ID_POLYGON)
 
         self._togglePanels.Bind(wx.EVT_TOGGLEBUTTON, self.OnTogglePanels, id=ID_TOGGLE_PANELS)
 
@@ -147,8 +155,14 @@ class RibbonFrame(wx.Frame):
 
 
 if __name__ == '__main__':
+
+    class Frame(wx.Frame):
+        def __init__(self, title):
+            wx.Frame.__init__(self, None, title=title, pos=(150,150), size=(550,200))
+
     app = wx.App(redirect=False)
-    win = RibbonFrame(None, -1, "wxPython Ribbon Sample Application", size=(270, 200), pos=(950,530))
+    frame = Frame("ribbon main")
+    win = RibbonFrame(frame, -1, "wxPython Ribbon Sample Application", size=(570, 200), pos=(950,530))
     win.Show()
     app.MainLoop()
 

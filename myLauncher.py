@@ -1,7 +1,6 @@
-# minimize example are taken from : http://www.blog.pythonlibrary.org/2013/07/12/wxpython-how-to-minimize-to-system-tray/
-# GUI settings are created with wxFormBuilder.
-# icons from https://www.iconexperience.com/o_collection/icons/?icon=bridge&color_style=green_dark_grey 
-#            http://en.miankoutu.com/zt-8359-1.html 
+# myLauncher app
+# by Ran
+# last update on 10/02/16
 #
 # TODO:  22/01/16
 # add text field in the 2nd panel
@@ -11,23 +10,13 @@
 
 ##
 '''
-helping links :
-http://www.blog.pythonlibrary.org/2010/09/04/python-101-how-to-open-a-file-or-program/
-http://pandas.pydata.org/pandas-docs/stable/io.html
-
 '''
 ##
-import wx, os
-import myGUI_Frames
-import Cmin2tray
-import myRibbonBar
-import pandas as pd
+from util_functions import *
 
-MY_DEBUG = True
+import myGUI_Frames
 
 myGlobals = {}
-myGlobals['user_path']      = './user_data/'
-myGlobals['user_file']      = 'mySubjectsLists.txt'
 myGlobals['user_dict']      = {}
 myGlobals['emptyFrame#2']   = 'true'
 
@@ -36,14 +25,14 @@ class LauncherFrame(myGUI_Frames.LauncherFrame):
     #constructor
     def __init__(self,parent):
 
-        # read user file: ( read-only mode by default )
-        f_name = myGlobals['user_path'] + myGlobals['user_file']
-        f = open(  f_name )
-        # read all the lines in the file and return them in a list
-        lines = f.readlines()
-        f.close()
-        if MY_DEBUG :
-            print lines
+        # # read user file: ( read-only mode by default )
+        # f_name = myGlobals['user_path'] + myGlobals['user_file']
+        # f = open(  f_name )
+        # # read all the lines in the file and return them in a list
+        # lines = f.readlines()
+        # f.close()
+        # if MY_DEBUG :
+        #     print lines
 
         # table = pd.read_table(f_name ) #, sep='|')
         # print table
@@ -63,6 +52,8 @@ class LauncherFrame(myGUI_Frames.LauncherFrame):
         # myMainMenu.LauncherFrame.
 
         # myMainMenu.projectsFrame.Hide(self)
+
+
 
     def btn_1_func(self,event):
         print "func: btn_1_func"

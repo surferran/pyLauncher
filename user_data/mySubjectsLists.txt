@@ -10,7 +10,7 @@ author : ran, starting date : 30/01/16
 last update date : 1/2/16
 list structure will be:
 {  subject name ,  subject display type,  subject image, desired image size}
-sub-subjects will be prefix by TAB key.
+sub-subjects will be prefixed and seperated by TAB key.
 
 end of notes
 

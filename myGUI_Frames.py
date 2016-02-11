@@ -7,8 +7,7 @@
 ## PLEASE DO "NOT" EDIT THIS FILE!
 ###########################################################################
 
-import wx
-import wx.xrc
+from util_functions import *
 
 ###########################################################################
 ## Class LauncherFrame
@@ -18,7 +17,10 @@ class LauncherFrame ( wx.Frame ):
 	
 	def __init__( self, parent ):
 		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 500,300 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
-		
+
+		register_my_HotKey(self)
+		self.Bind(wx.EVT_HOTKEY, self.handleHotKey, id=self.hotKeyId)
+
 		self.SetSizeHintsSz( wx.DefaultSize, wx.DefaultSize )
 		
 		bSizer9 = wx.BoxSizer( wx.VERTICAL )
@@ -67,7 +69,14 @@ class LauncherFrame ( wx.Frame ):
 		self.m_button1.Bind( wx.EVT_BUTTON, self.btn_1_func )
 		self.m_button2.Bind( wx.EVT_BUTTON, self.btn_2_func )
 		self.m_button11.Bind( wx.EVT_BUTTON, self.btn_3_func )
-	
+
+	def handleHotKey(self, evt):
+		"""
+         Prints a simple message when a hotkey event is received.
+        """
+		print "LauncherFrame registration callback"
+		print " do hot key actions"
+
 	def __del__( self ):
 		pass
 	
