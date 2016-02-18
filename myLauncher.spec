@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['myLauncher.py'],
-             pathex=['C:\\Users\\Ran_the_User\\Documents\\RAN\\NOW\\Python\\GUI_example\\myLauncher\\trial2exe'],
+             pathex=['C:\\Users\\Ran_the_User\\Documents\\GitHub\\pyLauncher'],
              binaries=None,
              datas=None,
              hiddenimports=[],
@@ -18,16 +18,11 @@ pyz = PYZ(a.pure, a.zipped_data,
              cipher=block_cipher)
 exe = EXE(pyz,
           a.scripts,
-          exclude_binaries=True,
+          a.binaries,
+          a.zipfiles,
+          a.datas,
           name='myLauncher',
           debug=False,
           strip=False,
           upx=True,
-          console=True )
-coll = COLLECT(exe,
-               a.binaries,
-               a.zipfiles,
-               a.datas,
-               strip=False,
-               upx=True,
-               name='myLauncher')
+          console=False )

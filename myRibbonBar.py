@@ -1,12 +1,5 @@
-# import wx
-# import os
-# import sys
-#
-# import coded_images as          images
-# from   coded_images_2   import  *
-# import wx.lib.agw.ribbon as RB
 
-from util_functions import *
+from myImports import *
 
 # --------------------------------------------------- #
 # Some constants for ribbon buttons
@@ -40,7 +33,7 @@ class RibbonFrame(wx.Frame):
 
         self._ribbon = RB.RibbonBar(panel, wx.ID_ANY, agwStyle=RB.RIBBON_BAR_DEFAULT_STYLE|RB.RIBBON_BAR_SHOW_PANEL_EXT_BUTTONS)
 
-        subj_list = load_user_list()
+        subj_list = util_functions.load_user_list()
         # RB_pages = []
         # for idx, value in enumerate(subj_list['item index']):
         #     if value % 1 == 0 :
@@ -49,6 +42,7 @@ class RibbonFrame(wx.Frame):
         RB_page1 = RB.RibbonPage(self._ribbon, wx.ID_ANY, subj_list['name'][0], (subj_list['image file'][0]) )
         RB_page2 = RB.RibbonPage(self._ribbon, wx.ID_ANY, subj_list['name'][2], (subj_list['image file'][2]) )
         RB_page3 = RB.RibbonPage(self._ribbon, wx.ID_ANY, subj_list['name'][5], (subj_list['image file'][5]) )
+        RB_page4 = RB.RibbonPage(self._ribbon, wx.ID_ANY, subj_list['name'][7], (subj_list['image file'][7]) )
         # RB_page2 = RB.RibbonPage(self._ribbon, wx.ID_ANY, subj_list['name'][1], CreateBitmap("ribbon") )
 
 

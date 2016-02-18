@@ -12,9 +12,8 @@
 '''
 '''
 ##
-from util_functions import *
+from myImports import *
 
-import myGUI_Frames
 
 myGlobals = {}
 myGlobals['user_dict']      = {}

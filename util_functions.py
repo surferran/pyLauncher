@@ -1,18 +1,7 @@
 # general file that includes all kind of funcitions i want to use in my App
 
-# imports
-import wx
-import wx.xrc
-import os
-import sys
-import Cmin2tray
-import myRibbonBar
-import pandas as pd
-import win32con         #for the VK keycodes
-
-import coded_images     as          images
-from   coded_images_2   import  *
-import wx.lib.agw.ribbon as RB
+from myImports import *
+##
 
 MY_DEBUG = not(True)
 # MY_DEBUG = (True)
@@ -78,12 +67,27 @@ def load_user_list():
         user_pref_dictionary['size in pixels']  .append(line[start_index+3])
         user_pref_dictionary['scaling']         .append(line[start_index+4])
 
+        ele=dict_to_xml('ran_dict', user_pref_dictionary)
+        print ele.text
+        pass
+
     if MY_DEBUG :
         print user_pref_dictionary
 
     return user_pref_dictionary
 
 ###############     ###############
+def dict_to_xml(tag, d):
+    '''
+    Turn a simple dict of key/value pairs into XML
+    '''
+    elem = Element(tag)
+    for key, val in d.items():
+        child = Element(key)
+        child.text = str(val)
+        elem.append(child)
+    return elem
+
 # just 1st indication for each line level-deep (identification)
 def get_user_hirarchy(lines):
     indeces = []

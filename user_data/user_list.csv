@@ -6,3 +6,6 @@ title line	subject 	display type	image file	size in pixels	nominal size
 		aero cam	list	Quad.jpg	"(0,0)"	1
 	my lists	list	todo.jpg	"(0,0)"	1	
 		web links	list	weblink.jpg	"(0,0)"	1
+	app 		general	NotRelevant.bmp	"(0,0)"	1
+		settings	image	todo.jpg	"(0,0)"	1
+		exit app	image	todo.jpg	"(0,0)"	1
