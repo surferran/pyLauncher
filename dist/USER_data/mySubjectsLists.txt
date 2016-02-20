@@ -1,0 +1,24 @@
+notes:
+
+this is my user input to the program 'myLauncher' 
+to show and help to get things done easy, relativley fast, 
+while helping remembering kind of notes and links, all in orderly lists.
+this is a trial to replace all kind of :
+descktop notes, history and favorits links, desktop spreaded icons,
+start menu.
+author : ran, starting date : 30/01/16
+last update date : 1/2/16
+list structure will be:
+{  subject name ,  subject display type,  subject image, desired image size}
+sub-subjects will be prefixed and seperated by TAB key.
+
+end of notes
+
+{Projects , IMAGE, }
+	{ HOME (regba) , IMAGE, 'home.jpg' , (32,32)}
+ 
+{links to keep, IMAGE , 'weblinks.jpg' ,(32,32)}
+	{ }
+
+{TODOs}
+{Ideas}

@@ -1,9 +1,9 @@
 import wx
 import os,  subprocess
 
-TRAY_TOOLTIP = ' -- application MyLauncher -- '  #"restore"
-TRAY_ICON  = '.\IMAGES\wx.ico'
-TRAY_ICONs = [TRAY_ICON , '.\IMAGES/4x4.png']
+TRAY_TOOLTIP    = ' -- application MyLauncher -- '  #"restore"
+TRAY_ICON       = '.\IMAGES\wx.ico'
+TRAY_ICONs      = [TRAY_ICON , '.\IMAGES/4x4.png']
 
 
 def create_menu_item(menu, label, func, icon_ndx=0):

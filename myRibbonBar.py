@@ -13,6 +13,11 @@ ID_TOGGLE_PANELS = ID_CIRCLE + 20
 def CreateBitmap(xpm):
     bmp = eval(xpm).Bitmap
     return bmp
+
+def ReadFileAsBitmap(name):
+    img = wx.Image(name,   wx.BITMAP_TYPE_ANY)
+    bmp = wx.BitmapFromImage(img)
+    return bmp
 # --------------------------------------------------- #
 
 class RibbonFrame(wx.Frame):
@@ -20,7 +25,7 @@ class RibbonFrame(wx.Frame):
     def __init__(self, parent, id=wx.ID_ANY, title="", pos=wx.DefaultPosition,
                  size=wx.DefaultSize, style=wx.DEFAULT_FRAME_STYLE, log=None):
 
-        wx.Frame.__init__(self, parent, id, title, pos, size, wx.HORIZONTAL  )
+        wx.Frame.__init__(self, parent, id, title, pos, size, wx.DEFAULT_FRAME_STYLE +wx.NO_BORDER )
         # wx.Frame.__init__(self, parent, id, title, pos, size, wx.DEFAULT_FRAME_STYLE+wx.NO_BORDER+wx.CAPTION+wx.HORIZONTAL  )
 
         parent.ribbon_link = self
@@ -54,6 +59,7 @@ class RibbonFrame(wx.Frame):
                          help_string="This is a tooltip for the circle button\ndemonstrating another tooltip",
                          kind=RB.RIBBON_BUTTON_TOGGLE)
         RBp_items.AddSimpleButton(ID_CROSS     , "Cross", CreateBitmap("cross"), "")
+        RBp_items.AddSimpleButton(ID_CROSS+100     , "RAN_bt", ReadFileAsBitmap(IMAGES_PATH + "home.jpg"), "help string to show")
         RBp_items.AddHybridButton(ID_TRIANGLE  , "Triangle", CreateBitmap("triangle"))
         RBp_items.AddSimpleButton(ID_SQUARE    , "Square", CreateBitmap("square"), "")
         RBp_items.AddDropdownButton(ID_POLYGON , "Other Polygon", CreateBitmap("hexagon"), "")
@@ -68,7 +74,7 @@ class RibbonFrame(wx.Frame):
         s = wx.BoxSizer(wx.VERTICAL)
 
         s.Add(self._ribbon, 0, wx.EXPAND)
-        s.Add(self._togglePanels, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 10)
+        s.Add(self._togglePanels, 1, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 10)
         panel.SetSizer(s)
         panel.CanScroll(False)
         self.panel = panel

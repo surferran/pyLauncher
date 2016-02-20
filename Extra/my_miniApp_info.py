@@ -20,12 +20,18 @@ https://www.daniweb.com/programming/software-development/code/216962/led-clock-u
 http://wiki.wxpython.org/RegisterHotKey
 https://docs.python.org/2/library/functions.html
 http://stackoverflow.com/questions/2612802/how-to-clone-or-copy-a-list-in-python
+
+http://opentechschool.github.io/python-data-intro/core/notebook.html
+
+
 '''
 ##
 '''
 links better check:
 http://schurpf.com/python/python-hotkey-module/
 https://azure.microsoft.com/en-us/documentation/articles/web-sites-python-create-deploy-django-app/
+jupyter:
+http://blog.jupyter.org/2015/07/07/project-jupyter-computational-narratives-as-the-engine-of-collaborative-data-science/
 
 pandas:
 https://spectraldifferences.wordpress.com/2014/04/08/import-csv-into-python-using-pandas/

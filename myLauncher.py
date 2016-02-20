@@ -14,7 +14,6 @@
 ##
 from myImports import *
 
-
 myGlobals = {}
 myGlobals['user_dict']      = {}
 myGlobals['emptyFrame#2']   = 'true'

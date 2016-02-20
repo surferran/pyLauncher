@@ -15,6 +15,34 @@ myGlobal_CONSTANTS['USER_FILE']     =  'user_list.csv'
 def get_user_file_rel():
     return myGlobal_CONSTANTS['USER_PATH'] + myGlobal_CONSTANTS['USER_FILE']
 
+def ref_func_df_to_xml(row):
+    xml = ['<item>']
+    for field in row.index:
+        xml.append('  <field name="{0}">{1}</field>'.format(field, row[field]))
+    xml.append('</item>')
+    return '\n'.join(xml)
+
+def ref_func_df_to_xml(df):
+    str_back= '\n'.join(df.apply(ref_func_df_to_xml, axis=1))
+    print str_back
+    return str_back
+
+def to_xml(df, filename=None, mode='w'):
+    def row_to_xml(row):
+        xml = ['<item>']
+        for i, col_name in enumerate(row.index):
+            xml.append('  <field name="{0}">{1}</field>'.format(col_name, row.iloc[i]))
+        xml.append('</item>')
+        return '\n'.join(xml)
+    res = '\n'.join(df.apply(row_to_xml, axis=1))
+
+    if filename is None:
+        return res
+    with open(filename, mode) as f:
+        f.write(res)
+
+# pd.DataFrame.to_xml = to_xml
+
 ######################################################
 def load_user_list():
     f_name = get_user_file_rel()
@@ -67,9 +95,25 @@ def load_user_list():
         user_pref_dictionary['size in pixels']  .append(line[start_index+3])
         user_pref_dictionary['scaling']         .append(line[start_index+4])
 
-        ele=dict_to_xml('ran_dict', user_pref_dictionary)
-        print ele.text
-        pass
+# output dictionary to xml ####
+
+    trial_real = dicttoxml.dicttoxml(user_pref_dictionary)
+    with open('outfile.xml', 'w') as f:
+        f.write(trial_real)
+
+    trial = table.to_json('output.json')
+    # check :
+# http://xmltool.lereskp.fr/en/latest/basic.html#creating-a-xml-file
+# http://docs.python-guide.org/en/latest/scenarios/xml/
+# http://stackoverflow.com/questions/19078170/python-how-would-you-save-a-simple-settings-config-file
+
+    # print ref_func_df_to_xml(table)
+    # ref by: http://stackoverflow.com/questions/18574108/how-do-convert-a-pandas-dataframe-to-xml
+    print to_xml(table,'output.xml')
+    # ele=dict_to_xml('ran_dict', user_pref_dictionary)
+    # print ele.text
+    pass
+####
 
     if MY_DEBUG :
         print user_pref_dictionary
@@ -121,6 +165,7 @@ def register_my_HotKey(item):  # item should be wx.Frame
 
 if __name__ == '__main__':
     # test1 = get_user_file_rel()
+    trial =  pd.read_json('output.json')
     test2 = load_user_list()
     print test2
     print ' end testing '

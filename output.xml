@@ -1,0 +1,90 @@
+<item>
+  <field name="title line">nan</field>
+  <field name="subject ">projects</field>
+  <field name="display type">tab_header</field>
+  <field name="image file">projects.jpg</field>
+  <field name="size in pixels">(0,0)</field>
+  <field name="nominal size">1</field>
+  <field name="Unnamed: 6">nan</field>
+</item>
+<item>
+  <field name="title line">nan</field>
+  <field name="subject ">nan</field>
+  <field name="display type">myLaunch app</field>
+  <field name="image file">image</field>
+  <field name="size in pixels">project_web.png</field>
+  <field name="nominal size">(0,0)</field>
+  <field name="Unnamed: 6">1.0</field>
+</item>
+<item>
+  <field name="title line">nan</field>
+  <field name="subject ">studies</field>
+  <field name="display type">tab_header</field>
+  <field name="image file">studies.jpg</field>
+  <field name="size in pixels">(0,0)</field>
+  <field name="nominal size">1</field>
+  <field name="Unnamed: 6">nan</field>
+</item>
+<item>
+  <field name="title line">nan</field>
+  <field name="subject ">nan</field>
+  <field name="display type">3d stereo robot</field>
+  <field name="image file">list</field>
+  <field name="size in pixels">stereo.png</field>
+  <field name="nominal size">(0,0)</field>
+  <field name="Unnamed: 6">1.0</field>
+</item>
+<item>
+  <field name="title line">nan</field>
+  <field name="subject ">nan</field>
+  <field name="display type">aero cam</field>
+  <field name="image file">list</field>
+  <field name="size in pixels">Quad.jpg</field>
+  <field name="nominal size">(0,0)</field>
+  <field name="Unnamed: 6">1.0</field>
+</item>
+<item>
+  <field name="title line">nan</field>
+  <field name="subject ">my lists</field>
+  <field name="display type">tab_header</field>
+  <field name="image file">todo.jpg</field>
+  <field name="size in pixels">(0,0)</field>
+  <field name="nominal size">1</field>
+  <field name="Unnamed: 6">nan</field>
+</item>
+<item>
+  <field name="title line">nan</field>
+  <field name="subject ">nan</field>
+  <field name="display type">web links</field>
+  <field name="image file">list</field>
+  <field name="size in pixels">weblink.jpg</field>
+  <field name="nominal size">(0,0)</field>
+  <field name="Unnamed: 6">1.0</field>
+</item>
+<item>
+  <field name="title line">nan</field>
+  <field name="subject ">app </field>
+  <field name="display type">nan</field>
+  <field name="image file">tab_header</field>
+  <field name="size in pixels">NotRelevant.bmp</field>
+  <field name="nominal size">(0,0)</field>
+  <field name="Unnamed: 6">1.0</field>
+</item>
+<item>
+  <field name="title line">nan</field>
+  <field name="subject ">nan</field>
+  <field name="display type">settings</field>
+  <field name="image file">image</field>
+  <field name="size in pixels">todo.jpg</field>
+  <field name="nominal size">(0,0)</field>
+  <field name="Unnamed: 6">1.0</field>
+</item>
+<item>
+  <field name="title line">nan</field>
+  <field name="subject ">nan</field>
+  <field name="display type">exit app</field>
+  <field name="image file">image</field>
+  <field name="size in pixels">todo.jpg</field>
+  <field name="nominal size">(0,0)</field>
+  <field name="Unnamed: 6">1.0</field>
+</item>
