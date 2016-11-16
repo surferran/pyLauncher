@@ -35,6 +35,9 @@ class LauncherFrame(myGUI_Frames.LauncherFrame):
         # table = pd.read_table(f_name ) #, sep='|')
         # print table
 
+        conf = json.load(open('./USER_data/conf.json.txt'))
+        print conf
+
         #initialize parent class
         myGUI_Frames.LauncherFrame.__init__(self,parent) # defined by the wx.Builder.class in outer file
         LauncherFrame.btn_3_func(self,None)
@@ -99,7 +102,7 @@ class webSitesFrame(myGUI_Frames.webSitesFrame):
         myGUI_Frames.webSitesFrame.__init__(self,parent) # defined by the wx.Builder.class in outer file
         self.Bind(wx.EVT_CLOSE  , self.onClose)
         self.SetBackgroundColour(wx.YELLOW)
-        self.m_WebLinks_listCtrl.SetDropTarget
+        '''# self.m_WebLinks_listCtrl.SetDropTarget'''
         myGlobals['emptyFrame#2'] = 'false'
 
     def add_to_list(self,txt):
@@ -121,6 +124,7 @@ class webSitesFrame(myGUI_Frames.webSitesFrame):
             # if (j % 2) == 0:
             #     self.m_WebLinks_listCtrl.SetItemBackgroundColour(j, '#e6f1f5')
             j = j + 1
+        '''# self.m_WebLinks_listCtrl.SetDropTarget(self.OnDropText) '''
 
     def OnDropText(self, x, y, data):
         """ Implement Text Drop """
