@@ -17,8 +17,6 @@ import dicttoxml
 import vispy
 print(vispy.sys_info())
 
-import json
-
 # according to : https://www.safaribooksonline.com/library/view/python-cookbook-3rd/9781449357337/ch06s05.html
 
 # general constants
@@ -29,6 +27,3 @@ import Cmin2tray
 import util_functions
 import myRibbonBar
 import myGUI_Frames
-
-from example_specific_trials.data_grid.pandasgrid import *
-from out_to_bokeh.bokeh_outputs_handlers import *
