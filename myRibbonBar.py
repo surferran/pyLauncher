@@ -85,6 +85,7 @@ class RibbonFrame(wx.Frame):
         # self.BindEvents([selection, shapes, provider_bar, toolbar_panel])
         RBp_items.Bind(RB.EVT_RIBBONBUTTONBAR_CLICKED              , self.OnCircleButton       , id=ID_CIRCLE)
         RBp_items.Bind(RB.EVT_RIBBONBUTTONBAR_CLICKED              , self.OnCrossButton        , id=ID_CROSS)
+        RBp_items.Bind(RB.EVT_RIBBONBUTTONBAR_CLICKED              , self.OnCrossButton        , id=ID_CROSS+100)
         RBp_items.Bind(RB.EVT_RIBBONBUTTONBAR_CLICKED              , self.OnTriangleButton     , id=ID_TRIANGLE)
         RBp_items.Bind(RB.EVT_RIBBONBUTTONBAR_CLICKED              , self.OnSquareButton       ,  id=ID_SQUARE)
         RBp_items.Bind(RB.EVT_RIBBONBUTTONBAR_DROPDOWN_CLICKED     , self.OnTriangleDropdown   , id=ID_TRIANGLE)
@@ -104,20 +105,21 @@ class RibbonFrame(wx.Frame):
         self.AlwaysShowScrollbars(False)
         self.ShowWithoutActivating()
 
-
+############################################
     def OnCircleButton(self, event):
         print("Circle button clicked.")
-    def OnCrossButton(self, event):
-        print("Cross button clicked.")
 
+    def OnCrossButton(self, event):
+        tmp_id = event.GetId()
+        if id==ID_CROSS+100:
+            print tmp_id
+            show_pandas_gui()
+        print("Cross/Other button clicked.")
 
     def OnTriangleButton(self, event):
-
         print("Triangle button clicked.")
 
-
     def OnTriangleDropdown(self, event):
-
         menu = wx.Menu()
         menu.Append(wx.ID_ANY, "Equilateral")
         menu.Append(wx.ID_ANY, "Isosceles")
@@ -125,14 +127,10 @@ class RibbonFrame(wx.Frame):
 
         event.PopupMenu(menu)
 
-
     def OnSquareButton(self, event):
-
         print("Square button clicked.")
 
-
     def OnPolygonDropdown(self, event):
-
         menu = wx.Menu()
         menu.Append(wx.ID_ANY, "Pentagon (5 sided)")
         menu.Append(wx.ID_ANY, "Hexagon (6 sided)")
@@ -143,13 +141,8 @@ class RibbonFrame(wx.Frame):
 
         event.PopupMenu(menu)
 
-
-
     def OnTogglePanels(self, event):
-
         self._ribbon.ShowPanels(self._togglePanels.GetValue())
-
-
 
 #---------------------------------------------------------------------------
 
@@ -160,9 +153,9 @@ if __name__ == '__main__':
         def __init__(self, title):
             wx.Frame.__init__(self, None, title=title, pos=(150,150), size=(550,200))
 
-    app = wx.App(redirect=False)
-    frame = Frame("ribbon main")
-    win = RibbonFrame(frame, -1, "wxPython Ribbon Sample Application", size=(570, 200), pos=(950,530))
+    app     = wx.App(redirect=False)
+    frame   = Frame("ribbon main")
+    win     = RibbonFrame(frame, -1, "wxPython Ribbon Sample Application", size=(570, 200), pos=(950,530))
     win.Show()
     app.MainLoop()
 

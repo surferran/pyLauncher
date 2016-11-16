@@ -1,0 +1,7 @@
+D&D handler
+web handler - save link/content - in what category path
+categories by important/argent combinations
+link and sync to outlook / gmail e-mail+calender , and flash-display priorities
+link and sync to notes DB in cell phone
+in settings - flag to do those web links actions. for inter-work , or personal usage type
+
