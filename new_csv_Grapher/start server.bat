@@ -1,0 +1,1 @@
+bokeh serve make_csv_plots.py  --host localhost:5006 --host 10.0.0.3:5006 --host 10.0.0.5:5006
