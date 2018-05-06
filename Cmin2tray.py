@@ -1,4 +1,6 @@
 import wx
+print wx.__version__
+from wx import adv
 import os,  subprocess
 
 TRAY_TOOLTIP    = ' -- application MyLauncher -- '  #"restore"
@@ -14,12 +16,12 @@ def create_menu_item(menu, label, func, icon_ndx=0):
     return item
 
 ########################################################################
-class CustomTaskBarIcon(wx.TaskBarIcon):
+class CustomTaskBarIcon(wx.adv.TaskBarIcon):
     """"""
     #----------------------------------------------------------------------
     def __init__(self, frame):
         """Constructor"""
-        wx.TaskBarIcon.__init__(self)
+        wx.adv.TaskBarIcon.__init__(self)
         self.frame = frame
 
         img = wx.Image(TRAY_ICON,   wx.BITMAP_TYPE_ANY)
@@ -29,7 +31,7 @@ class CustomTaskBarIcon(wx.TaskBarIcon):
  
         self.SetIcon(self.icon, TRAY_TOOLTIP)
 
-        self.Bind(wx.EVT_TASKBAR_LEFT_DOWN, self.OnTaskBarLeftClick)
+        self.Bind(wx.adv.EVT_TASKBAR_LEFT_DOWN, self.OnTaskBarLeftClick)
  
     #----------------------------------------------------------------------
 
